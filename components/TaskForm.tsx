@@ -2,7 +2,7 @@
 'use client';
 
 import { useForm } from 'react-hook-form';
-import { TaskDTO, UserDTO } from '@/types/dto';
+import { UserDTO } from '@/types/dto';
 
 export type TaskFormData = {
   title: string;
