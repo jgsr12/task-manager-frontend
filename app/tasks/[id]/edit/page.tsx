@@ -1,4 +1,3 @@
-// app/tasks/[id]/edit/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -16,13 +15,13 @@ export default function EditTaskPage() {
   useEffect(() => {
     api.get<TaskDTO>(`/tasks/${id}`)
       .then((res) => {
-        const { title, description, dueDate, status, assigneeId } = res.data;
+        const t = res.data;
         setInitial({
-          title,
-          description,
-          dueDate,
-          status,
-          assigneeId: assigneeId ?? ''
+          title:       t.title,
+          description: t.description,
+          dueDate:     t.dueDate,
+          status:      t.status === 'POR_HACER' || t.status === 'EN_PROGRESO' || t.status === 'FINALIZADA' ? t.status : 'POR_HACER',
+          assigneeId:  t.assigneeId ?? '',
         });
       })
       .catch(() => {

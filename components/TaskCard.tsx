@@ -12,7 +12,7 @@ export default function TaskCard({ task }: { task: TaskDTO }) {
     if (!confirm('¿Seguro que deseas eliminar esta tarea?')) return;
     try {
       await api.delete(`/tasks/${task.id}`);
-      router.refresh(); // vuelve a cargar datos en la página de /tasks
+      router.refresh();
     } catch (err) {
       console.error(err);
       alert('No se pudo eliminar la tarea');
